@@ -1,0 +1,67 @@
+/* ============================================================
+   Report design — edit colours / fonts / spacing here.
+   Then rebuild the PDF with:  ./build-report.sh
+   ============================================================ */
+
+@page { size: Letter; margin: 1.5cm 1.7cm; }
+
+:root {
+  --navy:   #1a2b4a;   /* headings */
+  --slate:  #33415c;   /* sub-headings */
+  --muted:  #5a6b85;   /* secondary text */
+  --gold:   #d8a200;   /* accent line / highlights */
+  --line:   #cdd5e0;   /* table borders */
+  --tint:   #f7f9fc;   /* callout / table header bg */
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1a1a1a;
+  font-size: 10.5pt;
+  line-height: 1.45;
+  margin: 0;
+}
+
+h1 { font-size: 21pt; color: var(--navy); margin: 0 0 2pt; }
+.subtitle { color: var(--muted); font-size: 10pt; margin: 0 0 4pt; }
+.meta { color: var(--muted); font-size: 9pt; margin: 0 0 12pt; }
+
+h2 {
+  font-size: 13pt; color: var(--navy);
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 3px; margin: 15pt 0 6pt;
+}
+h3 { font-size: 11pt; color: var(--slate); margin: 10pt 0 3pt; }
+
+p  { margin: 4pt 0; }
+ul { margin: 4pt 0; padding-left: 18px; }
+li { margin: 2pt 0; }
+
+strong { color: var(--slate); }
+
+/* highlighted key-facts box */
+.keyfacts {
+  background: var(--tint);
+  border-left: 3px solid var(--gold);
+  padding: 7px 11px; margin: 8pt 0; font-size: 9.5pt;
+}
+.keyfacts p { margin: 2pt 0; }
+
+table { border-collapse: collapse; width: 100%; font-size: 9pt; margin: 6pt 0; }
+th, td { border: 1px solid var(--line); padding: 4px 6px; text-align: left; vertical-align: top; }
+th { background: var(--tint); color: var(--slate); }
+
+img { max-width: 100%; max-height: 200px; display: block; margin: 6pt auto;
+      border: 1px solid #e3e8f0; border-radius: 4px; }
+
+/* two figures side by side (pandoc wraps both <img> in one <p>) */
+.row > p { display: flex; gap: 10px; align-items: flex-start; margin: 6pt 0; }
+.row img { flex: 1; min-width: 0; max-height: 150px; object-fit: contain; margin: 0; }
+
+.figcaption { text-align: center; color: var(--muted); font-size: 8.5pt; margin: -2pt 0 6pt; }
+
+code { background: #f3f4f6; padding: 1px 4px; border-radius: 3px; font-size: 9pt; }
+
+.page-break { page-break-before: always; }

@@ -1,0 +1,8 @@
+notebook/online_retail.xlsx
+notebook/online_retail_clean.parquet
+*.xlsx
+*.parquet
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
