@@ -51,16 +51,12 @@ densifying the one-hot matrix):
 - **Association rules**: at the required thresholds (min_support=0.15, min_confidence=0.5),
   Apriori found **0 frequent itemsets** — no single product appears in 15% of all baskets, so
   the threshold is simply too strict for this dataset. Re-run on the top 80 products at
-  min_support=0.02 produced 142 itemsets and 37 rules; top rule by lift: "Green Regency Teacup +
-  Cakestand 3 Tier → Roses Regency Teacup" (support 0.021, confidence 0.83, **lift 15.5**).
+  min_support=0.02 produced 142 itemsets and 37 rules. Top rule by lift: "Roses Regency Teacup +
+  Regency Cakestand 3 Tier → Green Regency Teacup" (support 0.021, confidence 0.74, **lift 15.7**);
+  its mirror, "Green Regency Teacup + Cakestand → Roses Regency Teacup", has confidence 0.83 and lift 15.5.
 
-**Caveat on the notebook's own saved output:** `notebook/online-retail-mining.ipynb` has a
-`SAMPLE_SIZE` testing toggle, and its last saved run (`SAMPLE_SIZE = 20000`) shows different,
-smaller numbers in its own output cells (527 customers, a much larger raw rule count before
-filtering) than the full-dataset numbers above. The full-dataset numbers in this README come
-from the companion script (`online-retail-mining-script.py`) and are backed by the CSVs in
-`report/outputs/`. Re-running the notebook with `SAMPLE_SIZE = None` reproduces the same
-full-dataset numbers.
+The notebook's saved outputs are from a full-dataset run (`SAMPLE_SIZE = None`) and match the
+numbers above and the CSVs in `report/outputs/`.
 
 ## How to run
 
@@ -75,8 +71,6 @@ python notebook/online-retail-mining-script.py
 
 ## What I'd do next
 
-- Re-run the notebook itself end-to-end with `SAMPLE_SIZE = None` so its saved outputs match
-  the full-dataset numbers, instead of relying on the separate script.
 - Try a segmentation beyond 2 clusters (e.g. inspecting k=3/4 despite the lower silhouette) to
   see if a business would find a finer split more actionable.
 - Look at rules per country instead of globally — the UK dominates the data and may be masking
